@@ -1,5 +1,11 @@
 const { test, before, after } = require('node:test');
 const assert = require('node:assert');
+
+// Set env vars SEBELUM require app (karena config.js dibaca saat import)
+process.env.JWT_SECRET = 'test-jwt-secret-key-for-testing-only-32chars!!';
+process.env.PAYMENT_GATEWAY_API_KEY = 'spk_test_fakekey123456789012345678901234';
+process.env.PORT = '0'; // auto-assign port
+
 const { createApp } = require('../src/app');
 
 let server;
